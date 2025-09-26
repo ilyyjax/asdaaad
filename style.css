@@ -1,0 +1,217 @@
+body {
+  margin: 0;
+  font-family: 'Comic Sans MS', sans-serif;
+  background: linear-gradient(to top, #87ceeb 0%, #e0f7fa 100%);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.game-container {
+  text-align: center;
+}
+
+/* ================= INTRO SCREEN ================= */
+#intro-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.intro-box {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  width: 420px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  transform: translateY(-40px);
+  opacity: 0;
+  animation: slideUp 1s ease forwards;
+}
+
+.intro-box h2 {
+  font-size: 2.4em;
+  color: #ff5e5e;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px #ffe066;
+}
+
+.objective-text {
+  font-size: 1.2em;
+  margin-bottom: 25px;
+  line-height: 1.6em;
+  color: #333;
+}
+
+#startBtn {
+  padding: 12px 25px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ff5e5e, #ff9b9b);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+#startBtn:hover {
+  background: linear-gradient(135deg, #ff7e7e, #ffb5b5);
+  transform: scale(1.05);
+}
+
+/* Intro Animations */
+@keyframes fadeIn {
+  from { background: rgba(0,0,0,0); }
+  to { background: rgba(0,0,0,0.75); }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.fade-out {
+  animation: fadeOut 0.6s ease forwards;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; visibility: hidden; }
+}
+
+/* Pulse button */
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 94, 94, 0.6); }
+  50% { transform: scale(1.08); box-shadow: 0 0 20px 8px rgba(255, 94, 94, 0.4); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 94, 94, 0.6); }
+}
+
+/* ================= GAME ================= */
+#scoreboard h1 {
+  font-size: 3em;
+  color: #ff5e5e;
+  text-shadow: 2px 2px #ffe066;
+}
+
+#scoreboard p, #scoreboard label {
+  font-size: 1.5em;
+}
+
+#game-area {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  margin: 20px auto;
+  border: 5px solid #ff5e5e;
+  border-radius: 20px;
+  background: linear-gradient(to top, #a0e7e5, #b4f8c8);
+  overflow: hidden;
+}
+
+#pickle {
+  width: 50px;
+  height: 100px;
+  background: linear-gradient(to bottom, #9bff00 0%, #7fc800 100%);
+  border-radius: 50% 50% 40% 40% / 60% 60% 40% 40%;
+  position: absolute;
+  left: 275px;
+  bottom: 20px;
+  transform-origin: center bottom;
+  box-shadow: inset -3px -3px 0px rgba(0,0,0,0.2),
+              inset 2px 2px 2px rgba(0,0,0,0.15);
+  transition: transform 0.1s linear;
+}
+
+#pickle .eyes {
+  position: absolute;
+  top: 32px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+#pickle .eye {
+  width: 10px;
+  height: 10px;
+  background: black;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+#pickle .mouth {
+  position: absolute;
+  width: 20px;
+  height: 4px;
+  background: black;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.cloud {
+  width: 80px;
+  height: 50px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.rainbow {
+  width: 120px;
+  height: 60px;
+  border-radius: 60px 60px 0 0;
+  background: linear-gradient(to right, red 0%, orange 15%, yellow 30%, green 50%, blue 70%, indigo 85%, violet 100%);
+  position: absolute;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+.particle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none;
+  opacity: 1;
+  animation: particleFade 0.8s forwards;
+}
+
+@keyframes particleFade {
+  0% { transform: translateY(0) scale(1); opacity:1; }
+  100% { transform: translateY(-50px) scale(0.5); opacity:0; }
+}
+
+.multiplier-popup {
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2em;
+  color: #ff5e5e;
+  text-shadow: 2px 2px #ffe066;
+  opacity: 1;
+  animation: popupFade 1.5s forwards;
+}
+
+@keyframes popupFade {
+  0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-50px); }
+}
+
+.instructions {
+  font-size: 1.2em;
+  color: #555;
+  text-shadow: 1px 1px #fff;
+}
