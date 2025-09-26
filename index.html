@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pickled</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Intro GUI -->
+  <div id="intro-screen">
+    <div class="intro-box">
+      <h2>Welcome to Pickled!</h2>
+      <p class="objective-text">
+        🥒 Objective:<br><br>
+        👉 The longer you hold <strong>SPACEBAR</strong>, the higher your score.<br>
+        👉 Hit milestones to unlock <span style="color:#ff5e5e; font-weight:bold;">multipliers</span>.<br>
+        👉 Simple as that.<br><br>
+        🎉 Have fun and chase the highscore!
+      </p>
+      <button id="startBtn">Start Game</button>
+    </div>
+  </div>
+
+  <div class="game-container" style="display:none;">
+    <div id="scoreboard">
+      <h1>Pickled</h1>
+      <p>Score: <span id="score">0</span></p>
+      <p>Highscore: <span id="highscore">0</span></p>
+      <p>Multiplier: x<span id="multiplier">1</span></p>
+      <label for="pickleColor">Pickle Color:</label>
+      <input type="color" id="pickleColor" value="#9bff00">
+    </div>
+    <div id="game-area">
+      <div id="pickle">
+        <div class="eyes">
+          <div class="eye left"></div>
+          <div class="eye right"></div>
+        </div>
+        <div class="mouth"></div>
+      </div>
+    </div>
+    <p class="instructions">Hold SPACE to fly!</p>
+    <audio id="bgMusic" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+    <audio id="milestoneSound" src="https://freesound.org/data/previews/109/109662_945474-lq.mp3"></audio>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
